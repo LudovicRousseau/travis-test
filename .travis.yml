@@ -13,11 +13,10 @@ env:
 before_install:
     - docker pull ${DIST_NAME}:${DIST_VERS}
     - docker build --rm=true --file=Dockerfile.${DIST_NAME}-${DIST_VERS} --tag=${DIST_NAME}-${DIST_VERS}:${TAG} .
-    - docker run --name ${TAG} -d -t ${DIST_NAME}-${DIST_VERS}:${TAG} /bin/bash > container.id
 
 script:
-  - CONTAINER_ID=$(cat container.id)
-  - docker ps -a
-  - docker exec -t "${CONTAINER_ID}" pwd
-  - docker exec -t "${CONTAINER_ID}" find
-  - docker stop "${CONTAINER_ID}"
+    - docker run --volume=`pwd`:/build ${DIST_NAME}-${DIST_VERS}:${TAG}
+      sh -c "
+      pwd &&
+      find
+      "
