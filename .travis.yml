@@ -17,6 +17,5 @@ before_install:
 script:
     - docker run --volume=`pwd`:/build ${DIST_NAME}-${DIST_VERS}:${TAG}
       sh -c "
-      pwd &&
-      find
+      make && ./pouet
       "
