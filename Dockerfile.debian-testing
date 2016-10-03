@@ -1,0 +1,5 @@
+FROM debian:testing
+MAINTAINER Ludovic Rousseau
+
+RUN mkdir /build
+WORKDIR /build
