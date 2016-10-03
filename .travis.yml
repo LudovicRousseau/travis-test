@@ -18,4 +18,6 @@ before_install:
 script:
   - CONTAINER_ID=$(cat container.id)
   - docker ps -a
+  - docker exec -t "${CONTAINER_ID}" pwd
+  - docker exec -t "${CONTAINER_ID}" find
   - docker stop "${CONTAINER_ID}"
