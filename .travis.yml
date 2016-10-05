@@ -12,7 +12,7 @@ env:
 
 before_install:
     - docker pull ${DIST_NAME}:${DIST_VERS}
-    - docker build --rm=true --file=Dockerfile.${DIST_NAME}-${DIST_VERS} --tag=${DIST_NAME}-${DIST_VERS}:${TAG} .
+    - docker build --rm=true --file=travis-ci/Dockerfile.${DIST_NAME}-${DIST_VERS} --tag=${DIST_NAME}-${DIST_VERS}:${TAG} travis-ci
 
 script:
     - docker run --volume=`pwd`:/build ${DIST_NAME}-${DIST_VERS}:${TAG}
