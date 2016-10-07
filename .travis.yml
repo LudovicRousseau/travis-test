@@ -5,6 +5,10 @@ language: c
 services:
   - docker
 
+compiler:
+  - clang
+  - gcc
+
 env:
   - DIST_NAME: debian
     DIST_VERS: testing
