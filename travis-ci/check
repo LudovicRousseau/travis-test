@@ -3,6 +3,6 @@
 set -e
 
 echo "CC: $CC"
-$(CC) --version
+$CC --version
 
 autoconf --version
