@@ -26,6 +26,7 @@ before_install:
 
 script:
     - echo "export CC=$CC" > travis-ci/env
+    - echo "export TRAVIS_OS_NAME=$TRAVIS_OS_NAME" >> travis-ci/env
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then docker run --volume=`pwd`:/build ${DIST_NAME}-${DIST_VERS}:${TAG}
       sh -c "
       . travis-ci/env ;

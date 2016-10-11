@@ -6,7 +6,12 @@ set -x
 echo "CC: $CC"
 $CC --version
 
-# display the environment variables
-env
+echo "TRAVIS_OS_NAME:" $TRAVIS_OS_NAME
+if [ "$TRAVIS_OS_NAME" = "linux" ]
+then
+	echo "Linux"
+else
+	echo "NOT Linux"
+fi
 
 autoconf --version
