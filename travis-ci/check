@@ -6,4 +6,7 @@ set -x
 echo "CC: $CC"
 $CC --version
 
+# display the environment variables
+env
+
 autoconf --version
