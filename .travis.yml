@@ -27,12 +27,11 @@ before_install:
 script:
     - echo "export CC=$CC" > travis-ci/env
     - echo "export TRAVIS_OS_NAME=$TRAVIS_OS_NAME" >> travis-ci/env
+
+    # Command to execute
+    - CMD=". travis-ci/env ; travis-ci/check && make && ./pouet"
+
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then docker run --volume=`pwd`:/build ${DIST_NAME}-${DIST_VERS}:${TAG}
-      sh -c "
-      . travis-ci/env ;
-      travis-ci/check && make && ./pouet
-      " ; fi
+      sh -c "$CMD" ; fi
     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
-      sh -c "
-      travis-ci/check ; make && ./pouet
-      " ; fi
+      sh -c "$CMD" ; fi
