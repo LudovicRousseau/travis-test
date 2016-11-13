@@ -14,14 +14,14 @@ os:
   - osx
 
 env:
-  - DIST_NAME: debian
+  - CONF: default
+    DIST_NAME: debian
     DIST_VERS: testing
     TAG: grisbi
-    CONF: default
-  - DIST_NAME: debian
+  - CONF: goffice
+    DIST_NAME: debian
     DIST_VERS: testing
     TAG: grisbi
-    CONF: goffice
 
 before_install:
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then docker pull ${DIST_NAME}:${DIST_VERS} ; fi
