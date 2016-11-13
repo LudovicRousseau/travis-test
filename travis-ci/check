@@ -7,11 +7,13 @@ echo "CC: $CC"
 $CC --version
 
 echo "TRAVIS_OS_NAME:" $TRAVIS_OS_NAME
-if [ "$TRAVIS_OS_NAME" = "linux" ]
-then
-	echo "Linux"
-else
-	echo "NOT Linux"
-fi
+case "$TRAVIS_OS_NAME" in 
+	*linux*)
+		echo "Linux"
+		;;
+	*osx*)
+		echo "macOS"
+		;;
+esac
 
 autoconf --version
