@@ -17,6 +17,11 @@ env:
   - DIST_NAME: debian
     DIST_VERS: testing
     TAG: grisbi
+    CONF: default
+  - DIST_NAME: debian
+    DIST_VERS: testing
+    TAG: grisbi
+    CONF: goffice
 
 before_install:
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then docker pull ${DIST_NAME}:${DIST_VERS} ; fi
@@ -27,6 +32,7 @@ before_install:
 script:
     - echo "export CC=$CC" > travis-ci/env
     - echo "export TRAVIS_OS_NAME=$TRAVIS_OS_NAME" >> travis-ci/env
+    - echo "export CONF=$CONF" >> travis-ci/env
 
     # Command to execute
     - CMD=". travis-ci/env ; travis-ci/check && make && ./pouet"
