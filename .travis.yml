@@ -13,6 +13,10 @@ addons:
     update: true
     brewfile: true
 
+  apt:
+    packages:
+      - autoconf
+
 env:
   - CONF: default
   - CONF: goffice
